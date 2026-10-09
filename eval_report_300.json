@@ -1,0 +1,37 @@
+{
+  "total": 300,
+  "category_accuracy": 1.0,
+  "sub_category_accuracy": 1.0,
+  "priority_accuracy": 0.9033,
+  "full_hit_accuracy": 0.9033,
+  "avg_confidence": 0.8295,
+  "low_confidence_ratio": 0.1333,
+  "by_category": {
+    "云桌面": {
+      "total": 90,
+      "cat_accuracy": 1.0,
+      "sub_accuracy": 1.0
+    },
+    "存储": {
+      "total": 30,
+      "cat_accuracy": 1.0,
+      "sub_accuracy": 1.0
+    },
+    "服务器": {
+      "total": 60,
+      "cat_accuracy": 1.0,
+      "sub_accuracy": 1.0
+    },
+    "网络安全": {
+      "total": 60,
+      "cat_accuracy": 1.0,
+      "sub_accuracy": 1.0
+    },
+    "超融合": {
+      "total": 60,
+      "cat_accuracy": 1.0,
+      "sub_accuracy": 1.0
+    }
+  },
+  "errors_sample": []
+}
