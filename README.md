@@ -57,6 +57,18 @@ IT 基础设施交付的技术服务团队每天会收到来自多个区域的�
 两者复用同一套工具（classify / dispatch / assign）与 Worker 并行派发机制，初筛结果一致；
 差异点（n_workers 由 LLM 自主 vs 规则决定）即两种编排范式的真实取舍，可作为编排范式选型的参考。
 
+### 双初筛实现（规则 Mock ↔ 真实 BERT）
+
+初筛层支持两种分类器，接口一致、可插拔切换（`InitialScreener` 注入）：
+
+| 版本 | 实现 | 特点 |
+|---|---|---|
+| `MockClassifier` | 关键词规则（`ticket-classifier` 包） | 零依赖、离线秒级、可复现；适合演示与单测 |
+| `BertClassifier` | bert-base-chinese 微调（`scripts/train_bert_classifier.py` 训练产物） | 判别式语义分类，覆盖未命中关键词的表述 |
+
+切换方式：`TICKET_SCREENER=bert python ...`（默认 mock）。训练脚本与评测脚本见
+`scripts/train_bert_classifier.py`（300 条程序化工单，8:2 分层，真实训练/验证）。
+
 ## 三、量化（Result）
 
 > 单测与演示全部为**本机真实运行**得到；标注「目标值/设计值」的为设计目标。
